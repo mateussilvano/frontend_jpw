@@ -65,6 +65,23 @@ export default class ProfessorPage extends React.Component {
         }
     }
 
+    putProfessor = async (id, user) => {
+        try {
+            let response = await Axios.put(`${this.API_URL}/${id}`,  user)
+            if (response.status === 200) {
+                await this.updateProfessorList()
+            }
+
+            this.setState({
+                errorMessage: null
+            })
+        } catch (err){ 
+            this.setState({
+                errorMessage: err.message
+            })
+        }
+    }
+
     render() {
         return <>
             <section>
@@ -74,7 +91,7 @@ export default class ProfessorPage extends React.Component {
             </section>
             <section>
                 <h2>Listagem de Professores</h2>
-                <ProfessorList list={this.state.professorList} deleteRequest={this.deleteProfessor}></ProfessorList>
+                <ProfessorList list={this.state.professorList} deleteRequest={this.deleteProfessor} putRequest={this.putProfessor}></ProfessorList>
             </section>
         </>
     }
