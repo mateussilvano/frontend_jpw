@@ -3,12 +3,12 @@ import ProfessorItem from "./ProfessorItem";
 
 export default class ProfessorList extends React.Component {
     render() {
+        if (this.props.list.length === 0) return <p>Não há professores cadastrados</p>
 
         let professorList = this.props.list.map(item => {
-            return <ProfessorItem professor={item} key={item.id}></ProfessorItem>
+            return <ProfessorItem professor={item} key={item._id} delete={() => { this.props.deleteRequest(item._id) }}></ProfessorItem>
+
         })
-        
-        if(professorList.length === 0) return "Não há professores cadastrados"
 
         return <ul>
             {professorList}
