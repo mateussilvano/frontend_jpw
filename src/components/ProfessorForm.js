@@ -1,4 +1,5 @@
 import React from "react";
+import {Box, Button, TextField} from '@mui/material'
 
 export default class ProfessorForm extends React.Component{
 
@@ -48,18 +49,20 @@ export default class ProfessorForm extends React.Component{
 
     render(){
         return <form onSubmit={this.handleSubmit}>
-            <input type="number" name="codigo" placeholder="Codigo" onChange={this.handleChange} value={this.state.codigo}></input>
-            <input type="text" name="nome" placeholder="Nome" onChange={this.handleChange} value={this.state.nome}></input>
-            <input type="text" name="email" placeholder="E-mail" onChange={this.handleChange} value={this.state.email}></input>
-            <input type="password" name="senha" placeholder="Senha" onChange={this.handleChange} value={this.state.senha}></input>
-            <input type="number" name="dtNascimento" placeholder="Data de Nascimento" onChange={this.handleChange} value={this.state.dtNascimento}></input>
-            <input type="number" name="cpf" placeholder="CPF" onChange={this.handleChange} value={this.state.cpf}></input>
-            <input type="number" name="telefone" placeholder="Telefone" onChange={this.handleChange} value={this.state.telefone}></input>
-            <input type="text" name="nacionalidade" placeholder="Nacionalidade" onChange={this.handleChange} value={this.state.nacionalidade}></input>
-            <input type="text" name="sexo" placeholder="Sexo" onChange={this.handleChange} value={this.state.sexo}></input>
-            <input type="text" name="função" placeholder="Função" onChange={this.handleChange} value={this.state.função}></input>
-            <input type="text" name="escolaridade" placeholder="Escolaridade" onChange={this.handleChange} value={this.state.escolaridade}></input>
-            <input type="submit" name="confirm" value="Confirmar"></input>
+            <Box display='flex' flexDirection="column">
+            <TextField type="number" variant="standard" name="codigo" label="Codigo" onChange={this.handleChange} value={this.state.codigo}></TextField>
+            <TextField type="text" variant="standard" name="nome" label="Nome" onChange={this.handleChange} value={this.state.nome}></TextField>
+            <TextField type="text" variant="standard" name="email" label="E-mail" onChange={this.handleChange} value={this.state.email}></TextField>
+            <TextField type="password" variant="standard" name="senha" label="Senha" onChange={this.handleChange} value={this.state.senha}></TextField>
+            <TextField type="number" variant="standard" name="dtNascimento" label="Data de Nascimento" onChange={this.handleChange} value={this.state.dtNascimento}></TextField>
+            <TextField type="number" variant="standard" name="cpf" label="CPF" onChange={this.handleChange} value={this.state.cpf}></TextField>
+            <TextField type="number" variant="standard" name="telefone" label="Telefone" onChange={this.handleChange} value={this.state.telefone}></TextField>
+            <TextField type="text" variant="standard" name="nacionalidade" label="Nacionalidade" onChange={this.handleChange} value={this.state.nacionalidade}></TextField>
+            <TextField type="text" variant="standard" name="sexo" label="Sexo" onChange={this.handleChange} value={this.state.sexo}></TextField>
+            <TextField type="text" variant="standard" name="função" label="Função" onChange={this.handleChange} value={this.state.função}></TextField>
+            <TextField type="text" variant="standard" name="escolaridade" label="Escolaridade" onChange={this.handleChange} value={this.state.escolaridade}></TextField>
+            <Button type="submit" name="confirm" >Confirmar</Button>
+            </Box>
         </form>
     }
 }

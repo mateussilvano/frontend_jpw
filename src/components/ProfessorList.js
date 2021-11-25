@@ -1,5 +1,6 @@
 import React from "react";
 import ProfessorItem from "./ProfessorItem";
+import { Table, TableRow, TableHead, TableBody, TableCell } from '@mui/material'
 
 export default class ProfessorList extends React.Component {
     render() {
@@ -12,8 +13,18 @@ export default class ProfessorList extends React.Component {
 
         })
 
-        return <ul>
-            {professorList}
-        </ul>
+        return <Table>
+            <TableHead>
+                <TableRow>
+                    <TableCell>Nome</TableCell>
+                    <TableCell>Senha</TableCell>
+                    <TableCell>E-mail</TableCell>
+                    <TableCell>Ações</TableCell>
+                </TableRow>
+            </TableHead>
+            <TableBody>
+                {professorList}
+            </TableBody>
+        </Table>
     }
 }

@@ -1,9 +1,12 @@
 import React from "react";
 import ProfessorForm from "./ProfessorForm";
+import {Button, TableRow, TableCell} from '@mui/material'
+import DeleteIcon from '@mui/icons-material/Delete'
+import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 
 export default class ProfessorItem extends React.Component {
 
-    constructor(props){
+    constructor(props) {
         super(props)
         this.state = {
             isUpdating: false
@@ -26,13 +29,20 @@ export default class ProfessorItem extends React.Component {
     }
 
     render() {
-        let form = this.state.isUpdating ? <ProfessorForm codigo={this.props.professor.codigo} action={this.confirm}></ProfessorForm> : null
+        let form = this.state.isUpdating ? <TableRow><TableCell colSpan={3}><ProfessorForm codigo={this.props.professor.codigo} action={this.confirm}></ProfessorForm></TableCell></TableRow> : null
 
-        let buttonDelete = <input type="button" value="Deletar" onClick={this.handleDelete}></input>
-        let buttonEdit =  <input type="button" value="Editar" onClick={this.setUpdateTrigger}></input>
-        let buttonContainer = <span>{buttonDelete} {buttonEdit}</span>
+        let buttonDelete = <Button type="button" variant="outlined" color="error" startIcon={<DeleteIcon />} onClick={this.handleDelete}>Deletar</Button>
+        let buttonEdit = <Button type="button" variant="outlined" startIcon={<EditOutlinedIcon />}onClick={this.setUpdateTrigger}>Editar</Button>
+        let buttonContainer = <span>{buttonEdit} {buttonDelete}</span>
 
-        return <li>{this.props.professor.nome} ({this.props.professor.senha}) {this.props.professor.email} {buttonContainer} {form}</li>
-
+        return <>
+            <TableRow>
+                <TableCell>{this.props.professor.nome}</TableCell>
+                <TableCell>({this.props.professor.senha})</TableCell>
+                <TableCell>{this.props.professor.email}</TableCell>
+                <TableCell>{buttonContainer}</TableCell>
+            </TableRow>
+            {form}
+        </>
     }
 }
