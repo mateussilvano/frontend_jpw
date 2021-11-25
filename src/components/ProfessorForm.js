@@ -6,7 +6,7 @@ export default class ProfessorForm extends React.Component{
         super (props)
 
         this.state = {
-            codigo: "",
+            codigo: this.props.codigo || "",
             nome: "",
             email: "",
             senha: "",

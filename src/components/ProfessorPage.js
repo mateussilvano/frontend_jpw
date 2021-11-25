@@ -41,7 +41,7 @@ export default class ProfessorPage extends React.Component {
             this.setState({
                 errorMessage: null
             })
-        } catch (err){ 
+        } catch (err) {
             this.setState({
                 errorMessage: err.message
             })
@@ -58,7 +58,7 @@ export default class ProfessorPage extends React.Component {
             this.setState({
                 errorMessage: null
             })
-        } catch (err){ 
+        } catch (err) {
             this.setState({
                 errorMessage: err.message
             })
@@ -67,7 +67,7 @@ export default class ProfessorPage extends React.Component {
 
     putProfessor = async (id, user) => {
         try {
-            let response = await Axios.put(`${this.API_URL}/${id}`,  user)
+            let response = await Axios.put(`${this.API_URL}/${id}`, user)
             if (response.status === 200) {
                 await this.updateProfessorList()
             }
@@ -75,7 +75,7 @@ export default class ProfessorPage extends React.Component {
             this.setState({
                 errorMessage: null
             })
-        } catch (err){ 
+        } catch (err) {
             this.setState({
                 errorMessage: err.message
             })

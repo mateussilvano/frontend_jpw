@@ -10,7 +10,7 @@ export default class ProfessorItem extends React.Component {
         }
     }
 
-    setUpdate = () => {
+    setUpdateTrigger = () => {
         this.setState({
             isUpdating: !this.state.isUpdating
         })
@@ -20,11 +20,16 @@ export default class ProfessorItem extends React.Component {
         this.props.delete()
     }
 
+    confirm = (user) => {
+        this.props.edit(user)
+        this.setUpdateTrigger()
+    }
+
     render() {
-        let form = this.state.isUpdating ? <ProfessorForm></ProfessorForm> : null
+        let form = this.state.isUpdating ? <ProfessorForm codigo={this.props.professor.codigo} action={this.confirm}></ProfessorForm> : null
 
         let buttonDelete = <input type="button" value="Deletar" onClick={this.handleDelete}></input>
-        let buttonEdit =  <input type="button" value="Editar" onClick={this.setUpdate}></input>
+        let buttonEdit =  <input type="button" value="Editar" onClick={this.setUpdateTrigger}></input>
         let buttonContainer = <span>{buttonDelete} {buttonEdit}</span>
 
         return <li>{this.props.professor.nome} ({this.props.professor.senha}) {this.props.professor.email} {buttonContainer} {form}</li>
